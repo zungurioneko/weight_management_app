@@ -13,6 +13,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <!-- ********** 「body」タグ内の一番上に，以下を追加 ********** -->
+    <!-- 本当は必要なページだけに追加すべきですが，本題ではないのでここに追加します -->
+    <!-- 全ページにナビバーを追加 -->
+    <%= render 'shared/header' %>
+    <!-- ログイン関連ページ以外にフラッシュ表示部分を追加 -->
+    <% if controller_name == 'graphs' %>
+      <%= render 'shared/flash_messages' %>
+    <% end %>
     <!-- ***** 本文を編集 ***** -->
     <!-- 全ページの横幅に上限を設ける（cssは後に追加） -->
     <div class="graph-container">
